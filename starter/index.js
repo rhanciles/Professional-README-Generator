@@ -1,7 +1,7 @@
 const fs = require("fs");
-const path = require('path');
+const util = require('util');
 const inquirer = require("inquirer");
-const writeFileAsync = path.promisify(fs.writeFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // const generateMarkdown = require("./utils/generateMarkdown");
 
@@ -64,7 +64,7 @@ return inquirer.prompt([
 }
 
 // function to write README file
-function generateInput(data) {
+const generateInput = (data) =>
 
 `# Professional README Generator
 
@@ -109,7 +109,7 @@ Please feel free to reach out if you have any questions, queries, comments, or s
 
 GitHub Username: [${data.github}](${data.gitURL})                         [Contact Email](${data.email})`;
 
-}
+
 
 // function to initialize program
 const init = async () => {
