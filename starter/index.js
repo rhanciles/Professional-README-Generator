@@ -1,13 +1,13 @@
 const fs = require("fs");
-const path = require('path');
+const util = require('util');
 const inquirer = require("inquirer");
 const writeFileAsync = util.promisify(fs.writeFile);
 
-const generateMarkdown = require("./utils/generateMarkdown");
+// const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
-const questions = () =>
-inquirer.prompt([
+const questions = () => {
+return inquirer.prompt([
     {
       type: 'input',
       name: 'title',
@@ -15,18 +15,33 @@ inquirer.prompt([
     },
     {
       type: 'input',
-      name: 'location',
-      message: 'Where are you from?',
+      name: 'describe',
+      message: 'Enter a description?',
     },
     {
       type: 'input',
-      name: 'hobby',
-      message: 'What is your favorite hobby?',
+      name: 'install',
+      message: 'Enter details about installation?',
     },
     {
       type: 'input',
-      name: 'food',
-      message: 'What is your favorite food?',
+      name: 'use',
+      message: 'Explain how to use the app?',
+    },
+    {
+      type: 'input',
+      name: 'permit',
+      message: 'Select a license for your project?',
+    },
+    {
+      type: 'input',
+      name: 'contribute',
+      message: 'Enter guidelines for contribution?',
+    },
+    {
+      type: 'input',
+      name: 'testing',
+      message: 'Enter guidelines for testing?',
     },
     {
       type: 'input',
@@ -35,20 +50,82 @@ inquirer.prompt([
     },
     {
       type: 'input',
-      name: 'linkedin',
-      message: 'Enter your LinkedIn URL.',
+      name: 'gitURL',
+      message: 'Enter your GitHub Username',
     },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter your email.',
+    },
+    
   ]);
 
+}
 
 // function to write README file
-function writeToFile(fileName, data) {
-}
+const generateInput = (data) =>
+
+`# Professional README Generator
+
+## Description
+
+${data.describe}
+
+## Table of Contents
+
+•	[Description](#Description)
+•	[Installation](#installation)
+•	[Usage](#usage)
+•	[License](#license)
+•	[Contributing](#Contributing)
+•	[Tests](#Tests)
+•	[Questions](#Questions) 
+
+
+## Installation
+
+${data.install}
+
+## Usage
+
+${data.use}
+
+## License
+
+${data.permit}
+
+## Contributing
+
+${data.contribute}
+
+## Test
+
+${data.testing}
+
+## Questions
+
+Please feel free to reach out if you have any questions, queries, comments, or suggestions. You can use the links below to contact me.
+
+GitHub Username: [${data.github}](${data.gitURL})                         [Contact Email](${data.email})`;
+
+
 
 // function to initialize program
-function init() {
-
-}
+const init = async () => {
+    console.log('Hi, please type in your details');
+    try {
+      const data = await questions();
+  
+      const text = generateInput(data);
+  
+      await writeFileAsync('README.md', text);
+  
+      console.log('Successfully written to README.md');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 // function call to initialize program
 init();
