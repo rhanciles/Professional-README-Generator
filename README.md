@@ -1,3 +1,5 @@
+![](https://img.shields.io/github/license/rhanciles/Professional-README-Generator?label=Provider)
+
 # Professional README Generator
 _A professional App, dynamically generating high-quality README files, using CLI_
 
@@ -26,8 +28,8 @@ Here is a demo of how the program works, or you can click [**here.**](https://dr
 ![](./starter/assets/README%20Gen%20Demo%2047MB.gif)
 
 
-## License
-https://choosealicense.com/.
+## License (MIT)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Contributing
 This app was designed by me. However, I must acknowledge the help and support I received from my friends at edX. Contributions and suggestions are welcome.
