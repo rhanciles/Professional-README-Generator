@@ -6,13 +6,13 @@ Imagine how cool it would be to have a README file self-generated for you after 
 
 ## Table of Contents
 
-•	[Description](#Description)
-•	[Installation](#installation)
-•	[Usage](#usage)
-•	[License](#license)
-•	[Contributing](#Contributing)
-•	[Tests](#Tests)
-•	[Questions](#Questions) 
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [Contributing](#Contributing)
+- [Tests](#Tests)
+- [Questions](#Questions) 
 
 
 ## Installation

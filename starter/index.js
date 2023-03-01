@@ -66,7 +66,7 @@ return inquirer.prompt([
 // function to write README file
 const generateInput = (data) =>
 
-`# Professional README Generator
+`# ${data.title}
 
 ## Description
 
@@ -74,13 +74,13 @@ ${data.describe}
 
 ## Table of Contents
 
-•	[Description](#Description)
-•	[Installation](#installation)
-•	[Usage](#usage)
-•	[License](#license)
-•	[Contributing](#Contributing)
-•	[Tests](#Tests)
-•	[Questions](#Questions) 
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [Contributing](#Contributing)
+- [Tests](#Tests)
+- [Questions](#Questions)  
 
 
 ## Installation
@@ -107,7 +107,8 @@ ${data.testing}
 
 Please feel free to reach out if you have any questions, queries, comments, or suggestions. You can use the links below to contact me.
 
-GitHub Username: [${data.github}](${data.gitURL})                         [Contact Email](${data.email})`;
+GitHub Username: [${data.github}](${data.gitURL})
+[Contact Email](${data.email})`;
 
 
 
