@@ -23,7 +23,7 @@ To use the program, enter “node index.js” to run the program and follow the 
 Here is a demo of how the program works, or you can click [**here.**](https://drive.google.com/file/d/1X3vH5NUXRlVUGNnWPDYdiZWile1bTG5Z/view?usp=sharing) to watch the video.
 
 
-![alt text](assets/images/screenshot.png)
+![](./starter/assets/README%20Gen%20Demo%2047MB.gif)
 
 
 ## License
