@@ -8,34 +8,35 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const mit = {
     badge: 'https://img.shields.io/github/license/Rod/Readme%20Generator',
     license: ['MIT Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const bsd = {
     badge: 'https://img.shields.io/pypi/l/Readme%20Generator',
     license: ['BSD Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const glp = {
     badge: 'https://img.shields.io/eclipse-marketplace/l/Readme%20Generator',
     license: ['GLP Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const apache = {
     badge: 'https://img.shields.io/hexpm/l/Readme%20Generator',
     license: ['APACHE Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const none = {
     badge: 'License Free',
-    license: 'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
+    license: 'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
   };
 
 
 console.log(mit.badge)
+console.log(glp.license)
 
 // array of questions for user
 const questions = () => {
@@ -64,7 +65,7 @@ return inquirer.prompt([
       type: 'list',
       name: ['badge', 'license'],
       message: 'Select a license for your project?',
-      choices: ['MIT', 'BSD-3', 'GPL-2.0', 'APACHE-2.0', 'None']
+      choices: ['MIT', 'BSD-3', 'GPL-2.0', 'APACHE-2.0', 'None'],
     },
     {
       type: 'input',
@@ -96,38 +97,12 @@ return inquirer.prompt([
 
 }
 
-// generateMarkdown(permit)
-
-// const userInput = (choice) => {
-
-    // if (data.license === 'MIT') {
-    //     (data.badge = mit.badge);
-    //     (data.license = mit.license);
-    // } else if (choice.license === 'BSD-3') {
-    //     (choice.badge = bsd.badge);
-    //     (choice.license = bsd.license);
-    // } else if (choice.license === 'GPL-2.0') {
-    //     (choice.badge = glp.badge);
-    //     (choice.license = glp.license);
-    // } else if (choice.license === 'APACHE-2.0') {
-    //     (choice.badge = apache.badge);
-    //     (choice.license = apache.license);
-    // } else if (choice.license === 'None') {
-    //     (choice.badge = none.badge);
-    //     (choice.license = none.license);
-    // } else {
-    //     (choice.badge = "");
-    //     (choice.license = "");
-    // } 
-
-// };
-
-// userInput(choice)
 
 // function to write README file
 const generateInput = (data) => {
 
-    if (data.license === 'MIT') {
+if (data.license === 'MIT') {
+      console.log("MIT !!!!!!!!")
         (data.badge = mit.badge);
         (data.license = mit.license);
     } else if (data.license === 'BSD-3') {
@@ -147,9 +122,7 @@ const generateInput = (data) => {
         (data.license = "");
     } 
 
-// generateMarkdown(badge)
-
-`${data.badge}
+return `${data.badge}
 
 # ${data.title}
 
@@ -204,11 +177,11 @@ const init = async () => {
     try {
       const data = await questions();
   
+    //   const text = JSON.stringify(generateInput(data));
       const text = generateInput(data);
 
-    //   const list = userInput(data)
-  
-      await writeFileAsync('README.md', JSON.stringify(text));
+      await writeFileAsync('README.md', text);
+    //   await writeFileAsync('README.md', JSON.stringify(text));
   
       console.log('Successfully written to README.md');
     } catch (err) {
@@ -220,20 +193,3 @@ const init = async () => {
 init();
 
 
-
-    
-// function generateMarkdown(permit) {
-  
-//     return `${permit.mit.badge}
-//     ${permit.mit.license}
-//     ${permit.bsd.badge}
-//     ${permit.bsd.license}
-//     ${permit.glp.badge}
-//     ${permit.glp.license}
-//     ${permit.apache.badge}
-//     ${permit.apache.license} 
-//     ${permit.none.badge}
-//     ${permit.none.license}
-//   `;
-//   }
-  
