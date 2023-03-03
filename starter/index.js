@@ -98,25 +98,42 @@ const generateInput = (data) => {
 
     // switch (menu) {
     //     case data.describe = "":
-    //       {data.badge = mit.badge,
-    //       data.license = mit.license};
+    //       {menu.description = "",
+    //       heading.description = ""};
       
-    //     case data.license = 'BSD-3':
-    //       {data.badge = bsd.badge,
-    //       data.license = bsd.license};
+    //     case data.install = "":
+    //       {menu.installation = "",
+    //       heading.installation = ""};
+    //       break;
     
-    //     case data.license = 'GPL-2.0' :
-    //       {data.badge = glp.badge,
-    //       data.license = glp.license};
+    //     case data.use = "":
+    //       {menu.usage = "",
+    //       heading.usage = ""};
+    //       break
       
-    //     case data.license = 'APACHE-2.0':
-    //       {data.badge = apache.badge,
-    //       data.license = apache.license};
+    //     case data.license = "":
+    //       {menu.license = "",
+    //       heading.license = ""};
+    //       break
     
+    //     case data.contribute = "":
+    //       {menu.contributing = "",
+    //       heading.contributing = ""};
+    //       break
+
+    //     case data.testing = "":
+    //       {menu.tests = "",
+    //       heading.tests = ""};
+    //       break
+
+    //     case data.question = "":
+    //       {menu.questions = "",
+    //       heading.questions = ""};
+    //       break;
+
     //     default:
-    //       {data.badge = none.badge,
-    //       data.license = none.license};
-    
+    //       console.log("No details has been entered")
+
     //   }
 
 return `${data.badge}
