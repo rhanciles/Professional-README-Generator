@@ -5,6 +5,38 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 // const generateMarkdown = require("./utils/generateMarkdown");
 
+const mit = {
+    badge: 'https://img.shields.io/github/license/Rod/Readme%20Generator',
+    license: ['MIT Software License:',
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+  };
+
+  const bsd = {
+    badge: 'https://img.shields.io/pypi/l/Readme%20Generator',
+    license: ['BSD Software License:',
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+  };
+
+  const glp = {
+    badge: 'https://img.shields.io/eclipse-marketplace/l/Readme%20Generator',
+    license: ['GLP Software License:',
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+  };
+
+  const apache = {
+    badge: 'https://img.shields.io/hexpm/l/Readme%20Generator',
+    license: ['APACHE Software License:',
+    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.']
+  };
+
+  const none = {
+    badge: 'License Free',
+    license: 'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
+  };
+
+
+console.log(mit.badge)
+
 // array of questions for user
 const questions = () => {
 return inquirer.prompt([
@@ -29,9 +61,10 @@ return inquirer.prompt([
       message: 'Explain how to use the app?',
     },
     {
-      type: 'input',
-      name: 'permit',
+      type: 'list',
+      name: ['badge', 'license'],
       message: 'Select a license for your project?',
+      choices: ['MIT', 'BSD-3', 'GPL-2.0', 'APACHE-2.0', 'None']
     },
     {
       type: 'input',
@@ -51,7 +84,7 @@ return inquirer.prompt([
     {
       type: 'input',
       name: 'gitURL',
-      message: 'Enter your GitHub Username',
+      message: 'Enter your GitHub URL',
     },
     {
       type: 'input',
@@ -63,10 +96,62 @@ return inquirer.prompt([
 
 }
 
-// function to write README file
-const generateInput = (data) =>
+// generateMarkdown(permit)
 
-`# ${data.title}
+// const userInput = (choice) => {
+
+    // if (data.license === 'MIT') {
+    //     (data.badge = mit.badge);
+    //     (data.license = mit.license);
+    // } else if (choice.license === 'BSD-3') {
+    //     (choice.badge = bsd.badge);
+    //     (choice.license = bsd.license);
+    // } else if (choice.license === 'GPL-2.0') {
+    //     (choice.badge = glp.badge);
+    //     (choice.license = glp.license);
+    // } else if (choice.license === 'APACHE-2.0') {
+    //     (choice.badge = apache.badge);
+    //     (choice.license = apache.license);
+    // } else if (choice.license === 'None') {
+    //     (choice.badge = none.badge);
+    //     (choice.license = none.license);
+    // } else {
+    //     (choice.badge = "");
+    //     (choice.license = "");
+    // } 
+
+// };
+
+// userInput(choice)
+
+// function to write README file
+const generateInput = (data) => {
+
+    if (data.license === 'MIT') {
+        (data.badge = mit.badge);
+        (data.license = mit.license);
+    } else if (data.license === 'BSD-3') {
+        (data.badge = bsd.badge);
+        (data.license = bsd.license);
+    } else if (data.license === 'GPL-2.0') {
+        (data.badge = glp.badge);
+        (data.license = glp.license);
+    } else if (data.license === 'APACHE-2.0') {
+        (data.badge = apache.badge);
+        (data.license = apache.license);
+    } else if (data.license === 'None') {
+        (data.badge = none.badge);
+        (data.license = none.license);
+    } else {
+        (data.badge = "");
+        (data.license = "");
+    } 
+
+// generateMarkdown(badge)
+
+`${data.badge}
+
+# ${data.title}
 
 ## Description
 
@@ -93,7 +178,7 @@ ${data.use}
 
 ## License
 
-${data.permit}
+${data.license}
 
 ## Contributing
 
@@ -110,17 +195,20 @@ Please feel free to reach out if you have any questions, queries, comments, or s
 GitHub Username: [${data.github}](${data.gitURL})
 [Contact Email](${data.email})`;
 
-
+}
 
 // function to initialize program
 const init = async () => {
     console.log('Hi, please type in your details');
+
     try {
       const data = await questions();
   
       const text = generateInput(data);
+
+    //   const list = userInput(data)
   
-      await writeFileAsync('README.md', text);
+      await writeFileAsync('README.md', JSON.stringify(text));
   
       console.log('Successfully written to README.md');
     } catch (err) {
@@ -130,3 +218,22 @@ const init = async () => {
 
 // function call to initialize program
 init();
+
+
+
+    
+// function generateMarkdown(permit) {
+  
+//     return `${permit.mit.badge}
+//     ${permit.mit.license}
+//     ${permit.bsd.badge}
+//     ${permit.bsd.license}
+//     ${permit.glp.badge}
+//     ${permit.glp.license}
+//     ${permit.apache.badge}
+//     ${permit.apache.license} 
+//     ${permit.none.badge}
+//     ${permit.none.license}
+//   `;
+//   }
+  
