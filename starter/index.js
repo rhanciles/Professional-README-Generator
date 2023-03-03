@@ -102,27 +102,6 @@ return inquirer.prompt([
 // function to write README file
 const generateInput = (data) => {
 
-if (data.license === 'MIT') {
-      console.log("MIT !!!!!!!!")
-        (data.badge = mit.badge);
-        (data.license = mit.license);
-    } else if (data.license === 'BSD-3') {
-        (data.badge = bsd.badge);
-        (data.license = bsd.license);
-    } else if (data.license === 'GPL-2.0') {
-        (data.badge = glp.badge);
-        (data.license = glp.license);
-    } else if (data.license === 'APACHE-2.0') {
-        (data.badge = apache.badge);
-        (data.license = apache.license);
-    } else {
-        (data.badge = none.badge);
-        (data.license = none.license);
-    // } else {
-    //     (data.badge = "");
-    //     (data.license = "");
-    } 
-
 return `${data.badge}
 
 # ${data.title}
@@ -178,8 +157,31 @@ const init = async () => {
     try {
       const data = await questions();
   
+      console.log(data.badge)
+
     //   const text = JSON.stringify(generateInput(data));
       const text = generateInput(data);
+
+      if (data.badge === 'MIT') {
+        console.log("MIT !!!!!!!!")
+          (data.badge = mit.badge);
+          (data.license = mit.license);
+      } else if (data.license === 'BSD-3') {
+          (data.badge = bsd.badge);
+          (data.license = bsd.license);
+      } else if (data.license === 'GPL-2.0') {
+          (data.badge = glp.badge);
+          (data.license = glp.license);
+      } else if (data.license === 'APACHE-2.0') {
+          (data.badge = apache.badge);
+          (data.license = apache.license);
+      } else {
+          (data.badge = none.badge);
+          (data.license = none.license);
+      // } else {
+      //     (data.badge = "");
+      //     (data.license = "");
+      }   
 
       await writeFileAsync('README.md', text);
     //   await writeFileAsync('README.md', JSON.stringify(text));
@@ -193,4 +195,4 @@ const init = async () => {
 // function call to initialize program
 init();
 
-console.log(questions.choices)
+
