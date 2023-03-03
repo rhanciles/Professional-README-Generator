@@ -1,10 +1,10 @@
-License Free
+https://img.shields.io/github/license/Rod/Readme%20Generator
 
-# 1
+# 2
 
 ## Description
 
-1
+2
 
 ## Table of Contents
 
@@ -19,27 +19,27 @@ License Free
 
 ## Installation
 
-1
+2
 
 ## Usage
 
-1
+2
 
 ## License
 
-undefined
+MIT Software License:,THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Contributing
 
-
+2
 
 ## Test
 
-1
+2
 
 ## Questions
 
 Please feel free to reach out if you have any questions, queries, comments, or suggestions. You can use the links below to contact me.
 
-GitHub Username: [1](1)
-[Contact Email](1)
+GitHub Username: [2](2)
+[Contact Email](2)
