@@ -3,30 +3,30 @@ const util = require('util');
 const inquirer = require("inquirer");
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// const generateMarkdown = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const mit = {
     badge: 'https://img.shields.io/github/license/Rod/Readme%20Generator',
-    license: ['MIT Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['MIT Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const bsd = {
     badge: 'https://img.shields.io/pypi/l/Readme%20Generator',
-    license: ['BSD Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['BSD Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const glp = {
     badge: 'https://img.shields.io/eclipse-marketplace/l/Readme%20Generator',
-    license: ['GLP Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['GLP Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const apache = {
     badge: 'https://img.shields.io/hexpm/l/Readme%20Generator',
-    license: ['APACHE Software License:',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['APACHE Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const none = {
@@ -63,7 +63,7 @@ return inquirer.prompt([
     },
     {
       type: 'list',
-      name: ['badge', 'license'],
+      name: 'license',
       message: 'Select a license for your project?',
       choices: ['MIT', 'BSD-3', 'GPL-2.0', 'APACHE-2.0', 'None'],
     },
@@ -97,32 +97,114 @@ return inquirer.prompt([
 
 }
 
-function getLicense(badge)  {
+// function getLicense(data)  {
 
-    switch (badge) {
-      case 'MIT' :
-        return mit.badge;
-    
-      case 'BSD-3':
-        return bsd.badge;
+//     // const setBadge = data.badge
+//     // const setLicense = data.license
 
-      case 'GPL-2.0' :
-        return glp.badge;
-    
-      case 'APACHE-2.0':
-        return apache.badge;
+//     // data = questions();
 
-      default:
-        return none.badge;
-    }
+//     switch (data) {
+//       case 'MIT':
+//         {data.badge = mit.badge,
+//         data.license = mit.license};
     
-  }
+//       case 'BSD-3':
+//         {data.badge = bsd.badge,
+//         data.license = bsd.license};
+
+//       case 'GPL-2.0' :
+//         {data.badge = glp.badge,
+//         data.license = glp.license};
+    
+//       case 'APACHE-2.0':
+//         {data.badge = apache.badge,
+//         data.license = apache.license};
+
+//       default:
+//         {data.badge = none.badge,
+//         data.license = none.license};
+
+    
+//     }
+
+//     return data
+
+// }
+
+// function getbadge(license)  {
+
+//     switch (license) {
+//       case 'MIT':
+//         return mit.license;
+    
+//       case 'BSD-3':
+//         return bsd.license;
+
+//       case 'GPL-2.0' :
+//         return glp.license;
+    
+//       case 'APACHE-2.0':
+//         return apache.license;
+
+//       default:
+//         return none.license;
+//     }
+    
+// }
+
 
 
 // function to write README file
 const generateInput = (data) => {
 
-return `${getLicense(data.badge)}
+    // if (data.license = 'MIT') {
+    //     // console.log("MIT !!!!!!!!")
+    //       (data.badge = mit.badge);
+    //       (data.license = mit.license);
+    //   } else if (data.license = 'BSD-3') {
+    //       (data.badge = bsd.badge);
+    //       (data.license = bsd.license);
+    //   } else if (data.license = 'GPL-2.0') {
+    //       (data.badge = glp.badge);
+    //       (data.license = glp.license);
+    //   } else if (data.license = 'APACHE-2.0') {
+    //       (data.badge = apache.badge);
+    //       (data.license = apache.license);
+    //   } else {
+    //       (data.badge = none.badge);
+    //       (data.license = none.license);
+    // //   } else {
+    // //       (data.badge = "");
+    // //       (data.license = "");
+    //   }   
+
+    // switch (data) {
+    //     case data.license = 'MIT':
+    //       {data.badge = mit.badge,
+    //       data.license = mit.license};
+      
+    //     case data.license = 'BSD-3':
+    //       {data.badge = bsd.badge,
+    //       data.license = bsd.license};
+  
+    //     case data.license = 'GPL-2.0' :
+    //       {data.badge = glp.badge,
+    //       data.license = glp.license};
+      
+    //     case data.license = 'APACHE-2.0':
+    //       {data.badge = apache.badge,
+    //       data.license = apache.license};
+  
+    //     default:
+    //       {data.badge = none.badge,
+    //       data.license = none.license};
+  
+    //   }
+
+    generateMarkdown(data)
+
+return `${data.badge}
 
 # ${data.title}
 
@@ -170,6 +252,7 @@ GitHub Username: [${data.github}](${data.gitURL})
 
 }
 
+
 // function to initialize program
 const init = async () => {
     console.log('Hi, please type in your details');
@@ -177,7 +260,7 @@ const init = async () => {
     try {
       const data = await questions();
   
-      console.log(data.badge)
+      console.log(data.license);
 
     //   const text = JSON.stringify(generateInput(data));
       const text = generateInput(data);
@@ -189,6 +272,7 @@ const init = async () => {
     } catch (err) {
       console.log(err);
     }
+
   };
 
 // function call to initialize program
