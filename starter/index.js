@@ -3,30 +3,30 @@ const util = require('util');
 const inquirer = require("inquirer");
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// const generateMarkdown = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const mit = {
     badge: 'https://img.shields.io/github/license/Rod/Readme%20Generator',
-    license: ['MIT Software License:\n',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['MIT Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const bsd = {
     badge: 'https://img.shields.io/pypi/l/Readme%20Generator',
-    license: ['BSD Software License:\n',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['BSD Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const glp = {
     badge: 'https://img.shields.io/eclipse-marketplace/l/Readme%20Generator',
-    license: ['GLP Software License:\n',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['GLP Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const apache = {
     badge: 'https://img.shields.io/hexpm/l/Readme%20Generator',
-    license: ['APACHE Software License:\n',
-    'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
+    license: ['APACHE Software License: ',
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'],
   };
 
   const none = {
@@ -97,26 +97,39 @@ return inquirer.prompt([
 
 }
 
-// function getLicense(badge)  {
+// function getLicense(data)  {
 
-//     switch (badge) {
+//     // const setBadge = data.badge
+//     // const setLicense = data.license
+
+//     // data = questions();
+
+//     switch (data) {
 //       case 'MIT':
-//         {data.badge = mit.badge;
+//         {data.badge = mit.badge,
 //         data.license = mit.license};
     
 //       case 'BSD-3':
-//         return bsd.badge;
+//         {data.badge = bsd.badge,
+//         data.license = bsd.license};
 
 //       case 'GPL-2.0' :
-//         return glp.badge;
+//         {data.badge = glp.badge,
+//         data.license = glp.license};
     
 //       case 'APACHE-2.0':
-//         return apache.badge;
+//         {data.badge = apache.badge,
+//         data.license = apache.license};
 
 //       default:
-//         return none.badge;
-//     }
+//         {data.badge = none.badge,
+//         data.license = none.license};
+
     
+//     }
+
+//     return data
+
 // }
 
 // function getbadge(license)  {
@@ -140,30 +153,56 @@ return inquirer.prompt([
     
 // }
 
+
+
 // function to write README file
 const generateInput = (data) => {
 
-    if (data.license = 'MIT') {
-        // console.log("MIT !!!!!!!!")
-          (data.badge = mit.badge);
-          (data.license = mit.license);
-      } else if (data.license = 'BSD-3') {
-          (data.badge = bsd.badge);
-          (data.license = bsd.license);
-      } else if (data.license = 'GPL-2.0') {
-          (data.badge = glp.badge);
-          (data.license = glp.license);
-      } else if (data.license = 'APACHE-2.0') {
-          (data.badge = apache.badge);
-          (data.license = apache.license);
-      } else {
-          (data.badge = none.badge);
-          (data.license = none.license);
+    // if (data.license = 'MIT') {
+    //     // console.log("MIT !!!!!!!!")
+    //       (data.badge = mit.badge);
+    //       (data.license = mit.license);
+    //   } else if (data.license = 'BSD-3') {
+    //       (data.badge = bsd.badge);
+    //       (data.license = bsd.license);
+    //   } else if (data.license = 'GPL-2.0') {
+    //       (data.badge = glp.badge);
+    //       (data.license = glp.license);
+    //   } else if (data.license = 'APACHE-2.0') {
+    //       (data.badge = apache.badge);
+    //       (data.license = apache.license);
     //   } else {
-    //       (data.badge = "");
-    //       (data.license = "");
-      }   
+    //       (data.badge = none.badge);
+    //       (data.license = none.license);
+    // //   } else {
+    // //       (data.badge = "");
+    // //       (data.license = "");
+    //   }   
 
+    // switch (data) {
+    //     case data.license = 'MIT':
+    //       {data.badge = mit.badge,
+    //       data.license = mit.license};
+      
+    //     case data.license = 'BSD-3':
+    //       {data.badge = bsd.badge,
+    //       data.license = bsd.license};
+  
+    //     case data.license = 'GPL-2.0' :
+    //       {data.badge = glp.badge,
+    //       data.license = glp.license};
+      
+    //     case data.license = 'APACHE-2.0':
+    //       {data.badge = apache.badge,
+    //       data.license = apache.license};
+  
+    //     default:
+    //       {data.badge = none.badge,
+    //       data.license = none.license};
+  
+    //   }
+
+    generateMarkdown(data)
 
 return `${data.badge}
 
