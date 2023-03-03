@@ -98,6 +98,7 @@ return inquirer.prompt([
 }
 
 
+
 // function to write README file
 const generateInput = (data) => {
 
@@ -114,12 +115,12 @@ if (data.license === 'MIT') {
     } else if (data.license === 'APACHE-2.0') {
         (data.badge = apache.badge);
         (data.license = apache.license);
-    } else if (data.license === 'None') {
+    } else {
         (data.badge = none.badge);
         (data.license = none.license);
-    } else {
-        (data.badge = "");
-        (data.license = "");
+    // } else {
+    //     (data.badge = "");
+    //     (data.license = "");
     } 
 
 return `${data.badge}
@@ -192,4 +193,4 @@ const init = async () => {
 // function call to initialize program
 init();
 
-
+console.log(questions.choices)
