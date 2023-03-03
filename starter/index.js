@@ -97,12 +97,32 @@ return inquirer.prompt([
 
 }
 
+function getLicense(badge)  {
+
+    switch (badge) {
+      case 'MIT' :
+        return mit.badge;
+    
+      case 'BSD-3':
+        return bsd.badge;
+
+      case 'GPL-2.0' :
+        return glp.badge;
+    
+      case 'APACHE-2.0':
+        return apache.badge;
+
+      default:
+        return none.badge;
+    }
+    
+  }
 
 
 // function to write README file
 const generateInput = (data) => {
 
-return `${data.badge}
+return `${getLicense(data.badge)}
 
 # ${data.title}
 
@@ -161,27 +181,6 @@ const init = async () => {
 
     //   const text = JSON.stringify(generateInput(data));
       const text = generateInput(data);
-
-      if (data.badge === 'MIT') {
-        console.log("MIT !!!!!!!!")
-          (data.badge = mit.badge);
-          (data.license = mit.license);
-      } else if (data.license === 'BSD-3') {
-          (data.badge = bsd.badge);
-          (data.license = bsd.license);
-      } else if (data.license === 'GPL-2.0') {
-          (data.badge = glp.badge);
-          (data.license = glp.license);
-      } else if (data.license === 'APACHE-2.0') {
-          (data.badge = apache.badge);
-          (data.license = apache.license);
-      } else {
-          (data.badge = none.badge);
-          (data.license = none.license);
-      // } else {
-      //     (data.badge = "");
-      //     (data.license = "");
-      }   
 
       await writeFileAsync('README.md', text);
     //   await writeFileAsync('README.md', JSON.stringify(text));
