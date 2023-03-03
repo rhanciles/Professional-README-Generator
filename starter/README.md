@@ -1,4 +1,4 @@
-[object Object]
+License Free
 
 # 1
 
@@ -31,7 +31,7 @@ undefined
 
 ## Contributing
 
-1
+
 
 ## Test
 
